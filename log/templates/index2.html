@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Dezzex tech</title>
+    <style>
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+        
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+        
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+            to {
+                transform: scale(1)
+            }
+        }
+        
+        .si {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+            box-sizing: border-box;
+        }
+        
+        .si:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+        
+        .signbtn {
+            float: left;
+            width: 50%;
+            padding: 14px 20px;
+            background-color: green;
+        }
+        
+        .contain2 {
+            padding: 12px;
+        }
+        
+        .sign_model {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            padding-top: 50px;
+        }
+        
+        .sign_model-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+        
+        .close2 {
+            position: absolute;
+            right: 35px;
+            top: 15px;
+            font-size: 40px;
+            font-weight: bold;
+        }
+        
+        .close2:hover,
+        .close2:focus {
+            color: #f44336;
+            cursor: pointer;
+        }
+        
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        /* 0 */
+        
+        .lo {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 8px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        
+        .lo:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+        
+        .hello {
+            border: none;
+            background-color: black;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #f2f2f2;
+        }
+        
+        .loginbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: skyblue;
+        }
+        
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+        
+        .contain {
+            padding: 16px;
+        }
+        
+        .login_model {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+        
+        .login_model-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        
+        .close {
+            position: absolute;
+            right: 30px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+        
+        #footer {
+            background-color: black;
+            color: wheat;
+        }
+        
+        .inner_footer {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <h1>Dezzex</h1>
+        </a>
+    </nav>
+    {% if messages %}
+    <div class="alert alert-success" role="alert">
+        {% for message in messages %}
+        <li>
+            <h1>{{ message }}</h1>
+        </li>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Hello user</h1>
+            <p>Welcome to <b>Dezzex tech</b> informational website. Here you can register yourself with us if already registered then proceed to Login </p>
+            <p><a class="btn btn-primary btn-lg" onclick="document.getElementById('signup_id').style.display='block'" style="width:auto;" role="button">Register yourself »</a></p>
+            <p><a class="btn btn-success btn-lg" onclick="document.getElementById('login_id').style.display='block'" style="width:auto;" role="button">Login »</a></p>
+        </div>
+    </div>
+    <div id="signup_id" class="sign_model">
+        <span onclick="document.getElementById('signup_id').style.display='none'" class="close2" title="Close sign_model">&times;</span>
+        <form class="sign_model-content animate" action="signup" method="post">{% csrf_token %}
+            <div class="contain2">
+                <h1 style="color: black;">Register</h1>
+                <p style="color: black;">Please fill in this form to create an account in <b>Dezzex</b></p>
+                <hr>
+                <label for="name"><b>Full name</b></label>
+                <input class="si" type="text" placeholder="Enter full name" id="name" name="name" required>
+
+                <label for="email"><b>Email</b></label>
+                <input class="si" type="email" placeholder="Enter Email" id="email" name="email" required>
+                <label for="phone"><b>Phone number</b></label>
+                <input class="si" type="tel" placeholder="Enter phone number" id="phone" name="phone" required>
+                <label for="pass"><b>passport number</b></label>
+                <input class="si" type="tel" placeholder="Enter passport number" id="passp" name="passp" required>
+                <label for="birthday">Date Of Birth</label>
+                <input class="si" type="date" id="birthday" name="birthday" required>
+                <label for="psw"><b>Password</b></label>
+                <input class="lo" type="password" placeholder="Enter phone no " name="password" required>
+                <label for="img">Upload photo:</label>
+                <input class="si" type="file" id="img" name="img" accept="image/*">
+
+                <div class="clearfix">
+                    <button type="submit" class="signbtn">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--  -->
+    <div id="login_id" class="login_model">
+
+        <form class="login_model-content animate" action="login" method='post'>{% csrf_token %}
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('login_id').style.display='none'" class="close" title="Close login_model">&times;</span>
+            </div>
+            <div class="contain">
+                <h1 style="color: black;">Log In</h1>
+                <p style="color: black;">Please fill your details to Login in your <b>Dezzex</b> account.</p>
+                <hr>
+                <label for="uname"><b>Username</b></label>
+                <input class="lo" type="tel" placeholder="Enter your phone no" name="uname" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input class="lo" type="password" placeholder="Enter phone no " name="psw" required>
+            </div>
+
+            <div class="contain" style="background-color:#f1f1f1">
+                <button type="submit" class="loginbtn">Login</button>
+            </div>
+        </form>
+    </div>
+    <nav id="footer" class="navbar fixed-bottom navbar-expand-sm ">
+        <span id="inner_footer">  &copy copyright dezzex tech.</span>
+    </nav>
+    <script>
+        // Get the login_model
+        var login_model = document.getElementById('login_id');
+        var sign_model = document.getElementById('signup_id');
+
+        //if any one click outside my login page and signup page it will close 
+        window.onclick = function(event) {
+            if (event.target == login_model) {
+                login_model.style.display = "none";
+            }
+            if (event.target == sign_model) {
+                sign_model.style.display = "none";
+            }
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+
+</html>
